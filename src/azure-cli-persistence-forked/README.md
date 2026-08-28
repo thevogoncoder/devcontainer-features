@@ -9,7 +9,7 @@
 
 ```json
 "features": {
-    "ghcr.io/joshuanianji/devcontainer-features/azure-cli-persistence-forked:0": {}
+    "ghcr.io/thevogoncoder/devcontainer-features/azure-cli-persistence-forked:0": {}
 }
 ```
 
@@ -44,4 +44,4 @@ Forked from [stuartleeks/azure-cli-persistence](https://github.com/stuartleeks/d
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/joshuanianji/devcontainer-features/blob/main/src/azure-cli-persistence-forked/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/thevogoncoder/devcontainer-features/blob/main/src/azure-cli-persistence-forked/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._

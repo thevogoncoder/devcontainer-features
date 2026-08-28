@@ -7,7 +7,7 @@ Installs the Google Cloud CLI (gcloud) via Google's apt repository. Forked from 
 
 ```json
 "features": {
-    "ghcr.io/joshuanianji/devcontainer-features/google-cloud-cli:1": {}
+    "ghcr.io/thevogoncoder/devcontainer-features/google-cloud-cli:1": {}
 }
 ```
 
@@ -52,4 +52,4 @@ Shells: `bash`, `zsh`, `fish`
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/joshuanianji/devcontainer-features/blob/main/src/google-cloud-cli/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/thevogoncoder/devcontainer-features/blob/main/src/google-cloud-cli/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._

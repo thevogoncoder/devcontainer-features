@@ -7,7 +7,7 @@ Avoid extra logins from the Terraform CLI by preserving the `~/.terraform.d` fol
 
 ```json
 "features": {
-    "ghcr.io/joshuanianji/devcontainer-features/terraform-cli-persistence:1": {}
+    "ghcr.io/thevogoncoder/devcontainer-features/terraform-cli-persistence:1": {}
 }
 ```
 
@@ -42,4 +42,4 @@ Shells: `bash`, `zsh`, `fish`
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/joshuanianji/devcontainer-features/blob/main/src/terraform-cli-persistence/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/thevogoncoder/devcontainer-features/blob/main/src/terraform-cli-persistence/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._

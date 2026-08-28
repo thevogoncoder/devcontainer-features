@@ -9,7 +9,7 @@ EdgeDB CLI via the official installation script. Includes the VSCode extension a
 
 ```json
 "features": {
-    "ghcr.io/joshuanianji/devcontainer-features/edgedb-cli:1": {}
+    "ghcr.io/thevogoncoder/devcontainer-features/edgedb-cli:1": {}
 }
 ```
 
@@ -79,4 +79,4 @@ Shells: `bash`, `zsh`, `fish`
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/joshuanianji/devcontainer-features/blob/main/src/edgedb-cli/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/thevogoncoder/devcontainer-features/blob/main/src/edgedb-cli/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
