@@ -56,7 +56,10 @@ apt_cache_version_soft_match() {
     # Regex needs to handle debian package version number format: https://www.systutorials.com/docs/linux/man/5-deb-version/
     version_regex="^(.+:)?${dot_plus_escaped}([\\.\\+ ~:-]|$)"
     set +e # Don't exit if finding version fails - handle gracefully
-        fuzzy_version="$(apt-cache madison ${package_name} | awk -F"|" '{print $2}' | sed -e 's/^[ \t]*//' | grep -E -m 1 "${version_regex}")"
+        # NOTE: trim trailing whitespace as well as leading -- `apt-cache madison`
+        # pads its columns, and a trailing space in the resolved version silently
+        # breaks any *quoted* `pkg=${VERSION}` use below.
+        fuzzy_version="$(apt-cache madison ${package_name} | awk -F"|" '{print $2}' | sed -e 's/^[ \t]*//' -e 's/[ \t]*$//' | grep -E -m 1 "${version_regex}")"
     set -e
     if [ -z "${fuzzy_version}" ]; then
         echo "(!) No full or partial for package \"${package_name}\" match found in apt-cache for \"${requested_version}\" on OS ${ID} ${VERSION_CODENAME} (${architecture})."
@@ -101,7 +104,28 @@ install_using_apt() {
     # Install gke-gcloud-auth-plugin if needed
     if [ "${INSTALL_GKE_GCLOUD_AUTH_PLUGIN}" = "true" ]; then
         echo "(*) Installing 'gke-gcloud-auth-plugin' plugin..."
-        check_packages google-cloud-sdk-gke-gcloud-auth-plugin
+        # NOTE: Google renamed the `google-cloud-sdk-*` packages to
+        # `google-cloud-cli-*`, and the transitional `google-cloud-sdk-` names have
+        # since been dropped from the apt repo entirely. Installing the old name now
+        # fails with "Package 'google-cloud-sdk-gke-gcloud-auth-plugin' has no
+        # installation candidate".
+        local plugin_package="google-cloud-cli-gke-gcloud-auth-plugin"
+
+        # The plugin ships in lockstep with `google-cloud-cli` (same version numbers,
+        # and no dependency between the two), so it takes the same pin resolved above
+        # -- empty when the user asked for "latest".
+        if ! (apt-get install -yq "${plugin_package}${GCLOUD_VERSION}"); then
+            # Google's apt repo only keeps a rolling window of versions. If the pinned
+            # plugin build is ever missing, prefer a version-skewed plugin over failing
+            # the whole build.
+            if [ -z "${GCLOUD_VERSION}" ]; then
+                return 1
+            fi
+            echo "(!) No ${plugin_package}${GCLOUD_VERSION} in the apt repo, falling back to the latest plugin."
+            if ! (apt-get install -yq "${plugin_package}"); then
+                return 1
+            fi
+        fi
     fi
 }
 

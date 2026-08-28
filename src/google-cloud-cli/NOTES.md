@@ -1,9 +1,11 @@
 ## Why this fork?
 
-This is a fork of [`ghcr.io/dhoeric/features/google-cloud-cli`](https://github.com/dhoeric/features/tree/main/src/google-cloud-cli). It ships two fixes that have been pending upstream for over half a year:
+This is a fork of [`ghcr.io/dhoeric/features/google-cloud-cli`](https://github.com/dhoeric/features/tree/main/src/google-cloud-cli). It ships three fixes that are missing upstream:
 
 1. **Trixie-compatible key import.** The upstream feature imports Google's apt key with `apt-key`, which was [removed in Debian 13 (trixie)](https://wiki.debian.org/NewInTrixie) and Ubuntu 24.04, so it fails with `apt-key: command not found` (exit 127) on those distributions. We use `gpg --dearmor` instead (the fix from [dhoeric/features#36](https://github.com/dhoeric/features/pull/36)).
 2. **Working `installGkeGcloudAuthPlugin` option.** The devcontainer feature runtime exposes options as environment variables by uppercasing the option name (`installGkeGcloudAuthPlugin` -> `INSTALLGKEGCLOUDAUTHPLUGIN`, no underscores). The upstream feature reads `INSTALL_GKEGCLOUDAUTH_PLUGIN` (with an underscore), which is never set, so the option silently does nothing. We read the correctly-named variable.
+
+3. **Current `gke-gcloud-auth-plugin` package name.** Google renamed its `google-cloud-sdk-*` apt packages to `google-cloud-cli-*`, and the transitional `google-cloud-sdk-` names have since been dropped from the repo entirely. The upstream feature still installs `google-cloud-sdk-gke-gcloud-auth-plugin`, so `installGkeGcloudAuthPlugin` now fails the build outright with `E: Package 'google-cloud-sdk-gke-gcloud-auth-plugin' has no installation candidate`. We install `google-cloud-cli-gke-gcloud-auth-plugin`, at the same version pin as the CLI.
 
 Otherwise the feature is identical to the upstream one (same options, same apt source).
 
@@ -22,6 +24,7 @@ Shells: `bash`, `zsh`, `fish`
 | Version | Notes |
 | ------- | ----- |
 | 1.0.0   | Initial fork of `ghcr.io/dhoeric/features/google-cloud-cli@1.0.1` with `gpg --dearmor` key import (fixes [dhoeric/features#36](https://github.com/dhoeric/features/pull/36), [joshuanianji/devcontainer-features#90](https://github.com/joshuanianji/devcontainer-features/issues/90)). |
+| 1.0.1   | Install the renamed `google-cloud-cli-gke-gcloud-auth-plugin` package (the old `google-cloud-sdk-` name has no installation candidate), pin the plugin to the same version as the CLI, and trim trailing whitespace off the resolved version. |
 
 ## References
 
