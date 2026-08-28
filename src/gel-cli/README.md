@@ -7,7 +7,7 @@ Gel CLI (previously EdgeDB) via the official installation script. Includes the V
 
 ```json
 "features": {
-    "ghcr.io/joshuanianji/devcontainer-features/gel-cli:1": {}
+    "ghcr.io/thevogoncoder/devcontainer-features/gel-cli:1": {}
 }
 ```
 
@@ -71,4 +71,4 @@ Shells: `bash`, `zsh`, `fish`
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/joshuanianji/devcontainer-features/blob/main/src/gel-cli/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/thevogoncoder/devcontainer-features/blob/main/src/gel-cli/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._

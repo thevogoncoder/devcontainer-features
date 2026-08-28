@@ -7,7 +7,7 @@ Installs [Lamdera](https://dashboard.lamdera.app/), a type-safe full-stack web-a
 
 ```json
 "features": {
-    "ghcr.io/joshuanianji/devcontainer-features/lamdera:1": {}
+    "ghcr.io/thevogoncoder/devcontainer-features/lamdera:1": {}
 }
 ```
 
@@ -53,4 +53,4 @@ Shells: `bash`, `zsh`, `fish`
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/joshuanianji/devcontainer-features/blob/main/src/lamdera/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/thevogoncoder/devcontainer-features/blob/main/src/lamdera/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._

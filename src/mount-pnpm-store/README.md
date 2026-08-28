@@ -7,7 +7,7 @@ Mounts a shared Docker volume as the pnpm store directory so packages are downlo
 
 ```json
 "features": {
-    "ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store:1": {}
+    "ghcr.io/thevogoncoder/devcontainer-features/mount-pnpm-store:1": {}
 }
 ```
 
@@ -80,4 +80,4 @@ The volume is named `global-devcontainer-pnpm-store`. Ensure no other Docker vol
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/joshuanianji/devcontainer-features/blob/main/src/mount-pnpm-store/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/thevogoncoder/devcontainer-features/blob/main/src/mount-pnpm-store/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
